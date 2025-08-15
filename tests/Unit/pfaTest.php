@@ -19,10 +19,10 @@ it('allows for placeholders', function() {
     expect($array_map([1, 2, 3]))->toBe([2, 4, 6]);
 });
 
-it('does not handle extras', function() {
+it('does handle extras', function() {
     $fn = p(fn(...$args) => $args);
     $fn = $fn(1, _, _);
-    expect($fn(2, 3, 4))->toBe([1, 2, 3]);
+    expect($fn(2, 3, 4))->toBe([1, 2, 3, 4]);
 });
 
 it('handles named placeholders', function() {
@@ -30,4 +30,15 @@ it('handles named placeholders', function() {
     $fn = $fn(a: 1, b: _);
     expect($fn(2))->toBe(3);
     expect($fn(b: 2))->toBe(3);
+});
+
+it('can nest them', function() {
+    // create a partial application compatible closure
+    $str_replace = p(str_replace(...));
+    // create a partial application using a bare underscore to annotate missing arguments
+    $dash_replace = $str_replace('-', _, _);
+    // and create another one based on the previous one
+    $snake_case = p($dash_replace)('_', _);
+
+    expect($snake_case('hello-world'))->toBe('hello_world');
 });
