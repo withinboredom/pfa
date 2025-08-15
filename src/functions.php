@@ -24,8 +24,6 @@ function p(Closure $first): Closure
             foreach($args as $name => $arg) {
                 if($placeHolders[$name] ?? false) {
                     $steps[$placeHolders[$name]] = $arg;
-                } else {
-                    $steps[] = $arg;
                 }
             }
 

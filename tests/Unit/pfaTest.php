@@ -19,10 +19,10 @@ it('allows for placeholders', function() {
     expect($array_map([1, 2, 3]))->toBe([2, 4, 6]);
 });
 
-it('does handle extras', function() {
+it('does not handle extras', function() {
     $fn = p(fn(...$args) => $args);
     $fn = $fn(1, _, _);
-    expect($fn(2, 3, 4))->toBe([1, 2, 3, 4]);
+    expect($fn(2, 3, 4))->toBe([1, 2, 3]);
 });
 
 it('handles named placeholders', function() {
