@@ -1,0 +1,29 @@
+{
+    "name": "withinboredom/pfa",
+    "description": "A library for generating and using partial function application",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Robert Landers",
+            "email": "landers.robert@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.4"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.8",
+        "phpbench/phpbench": "^1.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
