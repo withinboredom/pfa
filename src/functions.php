@@ -22,7 +22,7 @@ function p(Closure $first): Closure
 
         return static function (...$args) use ($first, $steps, $placeHolders) {
             foreach($args as $name => $arg) {
-                if($placeHolders[$name] ?? false) {
+                if(array_key_exists($name, $placeHolders)) {
                     $steps[$placeHolders[$name]] = $arg;
                 }
             }

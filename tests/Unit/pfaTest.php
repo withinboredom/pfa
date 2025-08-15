@@ -19,6 +19,12 @@ it('allows for placeholders', function() {
     expect($array_map([1, 2, 3]))->toBe([2, 4, 6]);
 });
 
+it('binds first placeholder', function() {
+    $strtoupper = p(strtoupper(...));
+    $strtoupper = $strtoupper(_);
+    expect($strtoupper('hello'))->toBe('HELLO');
+});
+
 it('does not handle extras', function() {
     $fn = p(fn(...$args) => $args);
     $fn = $fn(1, _, _);
